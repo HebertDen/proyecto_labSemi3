@@ -4,10 +4,10 @@ export class RoomClass {
     capacidadTotal: number = 0;
     capacidadActual: number = 0;
     precio: number = 0;
-    sorteo!: {
-        tiempoInicio: string,
-        tiempoFinalizacion: string
-    }
+    ingresoTotal: number = 0;
+    participantes!: [
+        {}
+    ]
 
     constructor(){}
 
@@ -17,6 +17,7 @@ export class RoomClass {
         this.capacidadTotal = item.capacidadTotal;
         this.capacidadActual = item.capacidadActual;
         this.precio = item.precio;
-        this.sorteo = item.sorteo;
+        this.ingresoTotal = item.ingresoTotal;
+        this.participantes = item.participantes;
     }
 }

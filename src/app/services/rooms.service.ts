@@ -17,10 +17,11 @@ export class RoomsService {
 
   // public rooms?: Room
 
-  // MÉTODO CON CLASS
+  // MÉTODO CON CLASS - transmitir
   public room$ = new Subject<RoomClass>();
   public rooms$ = new Subject<RoomClass[]>();
 
+  // recibir
   public room = new RoomClass();
   public rooms: RoomClass[] = [];
 

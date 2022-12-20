@@ -33,8 +33,9 @@ module.exports = function () {
         winners: [
             {
                 "id": 1,
-                "id_users": 1,
-                "cedula": 00001,
+                "nombre": "carlos",
+                "email": "carlos@gmail.com",
+                "cedula": 10001,
             }
         ],
         rooms: [
@@ -44,10 +45,10 @@ module.exports = function () {
                 "capacidadTotal": 35,
                 "capacidadActual": 20,
                 "precio": 8000,
-                "sorteo": {
-                    "tiempoInicio": "",
-                    "tiempoFinalizacion": "",
-                }
+                "ingresoTotal": 1500000,
+                participantes: [
+                    {}
+                ]
 
             },
             {
@@ -56,10 +57,10 @@ module.exports = function () {
                 "capacidadTotal": 35,
                 "capacidadActual": 15,
                 "precio": 12000,
-                "sorteo": {
-                    "tiempoInicio": "",
-                    "tiempoFinalizacion": "",
-                }
+                "ingresoTotal": 1500000,
+                participantes: [
+                    {}
+                ]
             },
             {
                 "id": 3,
@@ -67,10 +68,10 @@ module.exports = function () {
                 "capacidadTotal": 35,
                 "capacidadActual": 2,
                 "precio": 15000,
-                "sorteo": {
-                    "tiempoInicio": "",
-                    "tiempoFinalizacion": "",
-                }
+                "ingresoTotal": 1500000,
+                participantes: [
+                    {}
+                ]
             },
             {
                 "id": 4,
@@ -78,10 +79,10 @@ module.exports = function () {
                 "capacidadTotal": 47,
                 "capacidadActual": 1,
                 "precio": 16000,
-                "sorteo": {
-                    "tiempoInicio": "",
-                    "tiempoFinalizacion": "",
-                }
+                "ingresoTotal": 1500000,
+                participantes: [
+                    {}
+                ]
             },
             {
                 "id": 5,
@@ -89,10 +90,10 @@ module.exports = function () {
                 "capacidadTotal": 50,
                 "capacidadActual": 16,
                 "precio": 5000,
-                "sorteo": {
-                    "tiempoInicio": "",
-                    "tiempoFinalizacion": "",
-                }
+                "ingresoTotal": 1500000,
+                participantes: [
+                    {}
+                ]
             }
         ]
     }
