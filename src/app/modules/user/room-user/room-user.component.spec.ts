@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { RoomUserComponent } from './room-user.component';
+
+describe('RoomUserComponent', () => {
+  let component: RoomUserComponent;
+  let fixture: ComponentFixture<RoomUserComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ RoomUserComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(RoomUserComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

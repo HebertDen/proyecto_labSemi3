@@ -1,0 +1,16 @@
+<section>
+    <div class="row mt-5 px-5 container-fluid">
+        <div class="col col-12 p-2 border-2 border-bottom border-dark">
+            <h1>Salas</h1>
+        </div>
+        <div *ngIf="rooms.length > 0" class="col col-12 p-5 border-2 border border-success ">
+            <app-item-room *ngFor="let item of rooms" 
+                            [data]="item"
+                            (sendRoom)="eliminarSala($event)">
+            </app-item-room>
+        </div>
+        <div *ngIf="rooms.length === 0" class="col col-12 alert alert-danger" role="alert">
+            <strong>Sin salas</strong>
+        </div>
+    </div>
+</section>
