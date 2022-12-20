@@ -11,6 +11,7 @@ import { ItemRoomComponent } from './item-room/item-room.component';
 import { ItemWinnerComponent } from './item-winner/item-winner.component';
 import { CreateRoomComponent } from './create-room/create-room.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
+import { DeleteRoomComponent } from './delete-room/delete-room.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UpdateRoomComponent } from './update-room/update-room.component';
     ItemRoomComponent,
     ItemWinnerComponent,
     CreateRoomComponent,
-    UpdateRoomComponent
+    UpdateRoomComponent,
+    DeleteRoomComponent
   ],
   imports: [
     CommonModule,

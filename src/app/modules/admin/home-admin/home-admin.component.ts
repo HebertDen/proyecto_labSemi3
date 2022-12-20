@@ -4,6 +4,7 @@ import { RoomClass } from 'src/app/classes/room.class';
 import { WinnersService } from 'src/app/services/winners.service';
 import { WinnerClass } from 'src/app/classes/winner.class';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-admin',
@@ -24,7 +25,8 @@ export class HomeAdminComponent implements OnInit {
 
   constructor(
     public roomsService: RoomsService,
-    public winnersService: WinnersService
+    public winnersService: WinnersService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +52,7 @@ export class HomeAdminComponent implements OnInit {
     this.roomsService
       .deleteRoom(room)
       .subscribe();
+    this.route.navigate(['/admin/']);
   }
 
 }

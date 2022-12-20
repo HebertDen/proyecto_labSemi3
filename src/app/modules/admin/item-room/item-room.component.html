@@ -29,7 +29,7 @@
         </table>
         <div class="d-flex justify-content-center">
             <a [routerLink]="['/admin/update', data.id]" type="button" class="btn btn-warning me-3">Editar</a>
-            <button class="btn btn-danger" (click)="onDelete(data)">Eliminar</button>
+            <a [routerLink]="['/admin/delete', data.id]" type="button" class="btn btn-danger">Eliminar</a>
         </div>
     </div>
 </div>

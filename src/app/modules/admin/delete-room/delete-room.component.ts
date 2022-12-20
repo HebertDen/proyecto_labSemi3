@@ -5,11 +5,11 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-update-room',
-  templateUrl: './update-room.component.html',
-  styleUrls: ['./update-room.component.sass']
+  selector: 'app-delete-room',
+  templateUrl: './delete-room.component.html',
+  styleUrls: ['./delete-room.component.sass']
 })
-export class UpdateRoomComponent implements OnInit {
+export class DeleteRoomComponent implements OnInit {
 
   roomSubscription: Subscription = new Subscription; 
   public room = new RoomClass();
@@ -26,15 +26,16 @@ export class UpdateRoomComponent implements OnInit {
     this.id = this.router.snapshot.paramMap.get('id') || '';
     this.roomSubscription = this.roomsService.get$().subscribe((item: RoomClass) => {
       this.room = item;
-      this.room2 = this.room;
     });
     this.roomsService
       .get(this.id)
       .subscribe();
   }
 
-  onUpdate(): void {
-    this.roomsService.updateRoom(this.room2).subscribe();
+  onDelete(room: RoomClass): void {
+    this.roomsService
+      .deleteRoom(room)
+      .subscribe();
     this.route.navigate(['/admin/']);
   }
 

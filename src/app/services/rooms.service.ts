@@ -82,10 +82,15 @@ export class RoomsService {
   }
 
   createRoom(room: RoomClass): Observable<RoomClass> {
-    return this.http.post<RoomClass>(this.apiUrl, room)
+    return this.http.post<RoomClass>(this.apiUrl, room, this.httpOptions)
       .pipe(
-        map(() => {
-          console.log("Creada")
+        map((res: any) => {
+          if(res){
+            this.room = new RoomClass();
+            this.room.setValues(res);
+            this.room$.next(this.room);
+          }
+          console.log("Creada");
         }),
         catchError((err) => of(err))
       );
@@ -101,8 +106,6 @@ export class RoomsService {
             this.room.setValues(res);
             this.room$.next(this.room);
           }
-          console.log("Actualizado");
-          console.log(res);
         }),
         catchError((err) => of(err))
       )
