@@ -19,14 +19,10 @@
                     <div class="mb-3">
                         <input type="number" min="0" [(ngModel)]="room.precio" name="precio" class="form-control" placeholder="Precio">
                     </div>
-                    <div><button class="btn btn-success" (click)="onUpdate()">Actualizar</button></div>
-                </div>
-                <div>
-                    <ul>
-                        <li>Numero: {{ room.numero }}</li>
-                        <li>Capacidad total: {{ room.capacidadTotal }}</li>
-                        <li>Precio: {{ room.precio }}</li>
-                    </ul>
+                    <div>
+                        <button class="btn btn-success" (click)="onUpdate()">Actualizar</button>
+                        <a [routerLink]="['/admin/']" type="button" class="btn btn-secondary">Cancelar</a>
+                    </div>
                 </div>
             </div>
         </div>
