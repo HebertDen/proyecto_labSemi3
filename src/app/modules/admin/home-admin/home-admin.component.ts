@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomsService } from 'src/app/services/rooms.service';
-import { WinnersService } from 'src/app/services/winners.service';
-import { Subscription } from 'rxjs';
 import { RoomClass } from 'src/app/classes/room.class';
+import { WinnersService } from 'src/app/services/winners.service';
 import { WinnerClass } from 'src/app/classes/winner.class';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-admin',

@@ -6,13 +6,13 @@
                     <h1>Salas</h1>
                 </div>
                 <div class="d-flex col col-auto align-items-center">
-                    <a [routerLink]="['/admin/create']" type="button" class="btn btn-success">Crear sala</a>
+                    <a [routerLink]="['/admin/crear']" type="button" class="btn btn-success">Crear sala</a>
                 </div>
             </div>
         </div>
         <div class="col col-12">
             <div *ngIf="rooms.length > 0" class="row justify-content-center py-4">
-                <app-item-room class="col-sm-auto" *ngFor="let item of rooms" [data]="item"
+                <app-item-room class="col-sm-auto" *ngFor="let itemRoom of rooms" [data]="itemRoom"
                     (sendRoom)="eliminarSala($event)">
                 </app-item-room>
             </div>
@@ -24,7 +24,7 @@
             <h2>Ganadores</h2>
         </div>
         <div *ngIf="winners.length > 0" class="col col-12 p-5">
-            <app-item-winner *ngFor="let item of winners" [data]="item">
+            <app-item-winner *ngFor="let itemWinner of winners" [data]="itemWinner">
             </app-item-winner>
         </div>
         <div *ngIf="rooms.length === 0" class="col col-12 alert alert-danger" role="alert">

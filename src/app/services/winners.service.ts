@@ -33,6 +33,7 @@ export class WinnersService {
   }
 
   getAll(): Observable<any> {
+    this.winners = [];
     return this.http.get<WinnerClass[]>(this.apiUrl)
       .pipe(
         map((res: any) => {
@@ -57,7 +58,7 @@ export class WinnersService {
       .pipe(
         map((res: any) => {
           console.log(res);
-          if(res) {
+          if (res) {
             this.winner = new WinnerClass()
             this.winner.setValues(res)
             this.winner$.next(this.winner)

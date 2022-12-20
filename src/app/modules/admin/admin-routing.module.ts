@@ -11,7 +11,7 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       { path: '', component: HomeAdminComponent },
-      { path: 'create', component: CreateRoomComponent },
+      { path: 'crear', component: CreateRoomComponent },
       { path: 'update/:id', component: UpdateRoomComponent }
     ]
   }

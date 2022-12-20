@@ -30,7 +30,9 @@ export class RoomsService {
 
   // OPCIONES PARA IDENTIFICAR EL TIPO DE LOS DATOS QUE SERÁN TRAÍDOS
   httpOptions = {
-    header: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 
+      'Content-Type': 'application/json'
+    })
   }
 
   constructor(
@@ -42,7 +44,7 @@ export class RoomsService {
   }
 
   getAll(): Observable<any> {
-    console.log(this.tiempo);
+    this.rooms = [];
     return this.http.get<RoomClass[]>(this.apiUrl)
       .pipe(
         map((res: any) => {
@@ -90,10 +92,17 @@ export class RoomsService {
   }
 
   updateRoom(room: RoomClass): Observable<RoomClass> {
-    return this.http.put<RoomClass>(this.apiUrl+'/'+room.id, room)
+    console.log("Servicio");
+    return this.http.put<RoomClass>(this.apiUrl+'/'+room.id, room, this.httpOptions)
       .pipe(
-        map(() => {
-          console.log("Actualizado")
+        map((res: any) => {
+          if(res){
+            this.room = new RoomClass();
+            this.room.setValues(res);
+            this.room$.next(this.room);
+          }
+          console.log("Actualizado");
+          console.log(res);
         }),
         catchError((err) => of(err))
       )
