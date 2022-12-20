@@ -42,59 +42,27 @@ module.exports = function () {
             {
                 "id": 1,
                 "numero": 1,
-                "capacidadTotal": 35,
-                "capacidadActual": 20,
-                "precio": 8000,
-                "ingresoTotal": 1500000,
-                participantes: [
-                    {}
-                ]
-
+                "capacidadTotal": 50,
+                "capacidadActual": 15,
+                "precio": 1500,
+                "ingresoTotal": 15000,
+                "horas": 0,
+                "minutos": 20,
+                "segundos": 0,
+                participantes: []
             },
             {
                 "id": 2,
                 "numero": 2,
                 "capacidadTotal": 35,
                 "capacidadActual": 15,
-                "precio": 12000,
-                "ingresoTotal": 1500000,
-                participantes: [
-                    {}
-                ]
+                "precio": 1500,
+                "ingresoTotal": 15000,
+                "horas": 0,
+                "minutos": 30,
+                "segundos": 0,
+                participantes: []
             },
-            {
-                "id": 3,
-                "numero": 3,
-                "capacidadTotal": 35,
-                "capacidadActual": 2,
-                "precio": 15000,
-                "ingresoTotal": 1500000,
-                participantes: [
-                    {}
-                ]
-            },
-            {
-                "id": 4,
-                "numero": 4,
-                "capacidadTotal": 47,
-                "capacidadActual": 1,
-                "precio": 16000,
-                "ingresoTotal": 1500000,
-                participantes: [
-                    {}
-                ]
-            },
-            {
-                "id": 5,
-                "numero": 5,
-                "capacidadTotal": 50,
-                "capacidadActual": 16,
-                "precio": 5000,
-                "ingresoTotal": 1500000,
-                participantes: [
-                    {}
-                ]
-            }
         ]
     }
 

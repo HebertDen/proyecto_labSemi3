@@ -30,7 +30,7 @@ export class HomeAdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("Pagina");
+
     // Rooms
     this.roomSubscription = this.roomsService.getAll$().subscribe((itemsRooms: RoomClass[]) => {
       this.rooms = itemsRooms

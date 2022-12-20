@@ -9,6 +9,7 @@ import { RoomClass } from 'src/app/classes/room.class';
   styleUrls: ['./home-user.component.sass']
 })
 export class HomeUserComponent implements OnInit {
+
   roomSubscription: Subscription = new Subscription;
   public room = new RoomClass();
   public rooms: RoomClass[] = [];

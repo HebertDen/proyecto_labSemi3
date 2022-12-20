@@ -1,5 +1,5 @@
 export class AdminClass {
-    id: number = 0;
+    id: string = '';
     nombre: string = '';
     email: string = '';
     cedula: number = 0

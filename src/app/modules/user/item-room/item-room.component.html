@@ -1,7 +1,7 @@
 <div class="card me-4 mb-3" style="width: 18rem;">
     <div class="card-header ">
         <div class="text-center">
-            <h5>00:00:00</h5>
+            <h5>{{ hours | number:'2.0' }}:{{ minutes | number:'2.0' }}:{{ seconds | number:'2.0' }}</h5>
         </div>
     </div>
     <div class="card-body">
@@ -21,7 +21,6 @@
         </table>
         <div class="d-flex text-center">
             <a [routerLink]="['/user/room', data.id]" type="button" class="btn btn-success">Entrar</a>
-            <button class="btn btn-danger" disabled (click)="onDelete(data)">Eliminar</button>
         </div>
     </div>
 </div>

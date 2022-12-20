@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RoomClass } from 'src/app/classes/room.class';
 import { RoomsService } from 'src/app/services/rooms.service';
 
@@ -10,22 +10,66 @@ import { RoomsService } from 'src/app/services/rooms.service';
 export class ItemRoomComponent implements OnInit {
   room = new RoomClass();
 
-  @Input() data: RoomClass = {} as RoomClass;
+  public hours: number = 0;
+  public minutes: number = 0;
+  public seconds: number = 0;
+  public timer: any;
+  public date = new Date();
+  public time: number = 0;
 
-  @Output() sendRoom = new EventEmitter<RoomClass>();
+  @Input() data: RoomClass = {} as RoomClass;
 
   constructor(private roomsService: RoomsService) { }
 
   ngOnInit(): void {
+    this.hours = this.data.horas;
+    this.minutes = this.data.minutos;
+    this.seconds = this.data.segundos;
+    this.start();
   }
 
-  onDelete(room: RoomClass): void {
-    // MÉTODO ALTERNATIVO
-    // this.roomsService
-    //   .deleteRoom(room)
-    //   .subscribe();
-    this.room = room;
-    this.sendRoom.emit(this.room);
+  updateTimer() {
+    this.date.setHours(this.hours);
+    this.date.setMinutes(this.minutes);
+    this.date.setSeconds(this.seconds);
+    this.date.setMilliseconds(0);
+    this.time = this.date.getTime();
+    this.date.setTime(this.time - 1000);
+
+    this.hours = this.date.getHours();
+    this.minutes = this.date.getMinutes();
+    this.seconds = this.date.getSeconds();
+
+    if (this.date.getHours() === 0 &&
+      this.date.getMinutes() === 0 &&
+      this.date.getSeconds() === 0) {
+      clearInterval(this.timer);
+      this.stop();
+      console.log("Termino el juego")
+    }
+  }
+
+  stop() {
+    clearInterval(this.timer);
+  }
+
+  reset() {
+    this.hours = 0;
+    this.minutes = 0;
+    this.seconds = 0;
+    this.stop();
+  }
+
+  start() {
+    if (this.hours > 0 || this.minutes > 0 || this.seconds > 0) {
+      this.updateTimer();
+
+      if (this.seconds > 0) {
+        this.timer = setInterval(() => {
+          this.updateTimer();
+        }, 1000);
+      }
+    }
   }
 
 }
