@@ -1,45 +1,51 @@
 <section>
     <div class="row mt-5 px-5 container-fluid">
-        <div class="col col-2 border border-2 border-dark">
-            <app-navigate-user></app-navigate-user>
-        </div>
-        <div class="col col-10">
+        <div class="col col-12">
             <div class="col col-12 p-2 border-2 border-bottom border-dark">
                 <h1>Sala &#35;{{ room.numero }}</h1>
             </div>
-            <div class="col col-12 p-5 border-2 border border-success ">
-                <div class="d-flex">
-                    <div class="col col-3 p-3 border border-2 border-dark text-center">
-                        <span>n&uacute;mero</span>
-                        <h3>3</h3>
+            <div class="col col-12 p-5 ">
+                <div class="d-flex col col-12 p-3 justify-content-center">
+                    <div class="row text-center">
+                        <span>Horas</span>
+                        <h3>{{ hours | number:'2.0'}}</h3>
                     </div>
-                    <div class="d-flex col col-9 p-3 justify-content-center">
-                        <div class="row text-center">
-                            <span>Años</span>
-                            <h3>03</h3>
-                        </div>
-                        <div class="row text-center">
-                            <span>Meses</span>
-                            <h3>00</h3>
-                        </div>
-                        <div class="row text-center">
-                            <span>D&iacute;as</span>
-                            <h3>00</h3>
-                        </div>
-                        <div class="row text-center">
-                            <span>Horas</span>
-                            <h3>00</h3>
-                        </div>
-                        <div class="row text-center">
-                            <span>Minutos</span>
-                            <h3>00</h3>
-                        </div>
-                        <div class="row text-center">
-                            <span>Secundos</span>
-                            <h3>00</h3>
-                        </div>
+                    <div class="row text-center">
+                        <span>Minutos</span>
+                        <h3>{{ minutes | number:'2.0'}}</h3>
+                    </div>
+                    <div class="row text-center">
+                        <span>Segundos</span>
+                        <h3>{{ seconds | number:'2.0'}}</h3>
                     </div>
                 </div>
+            </div>
+            <div class="col col-12 p-2 border-2 border-bottom border-dark">
+                <h2>Participantes</h2>
+            </div>
+            <div *ngIf="room.participantes.length > 0" class="col col-12 p-5">
+                <div *ngFor="let itemParticipantes of room.participantes">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>N&Uacute;MERO</th>
+                                <th>c&Eacute;DULA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ itemParticipantes.numero }}</td>
+                                <td>{{ itemParticipantes.cedula }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div *ngIf="room.participantes.length === 0" class="col col-12 alert alert-danger" role="alert">
+                <strong>Sin participantes</strong>
+            </div>
+            <div *ngIf="!win" class="col col-12 alert alert-success" role="alert">
+                <app-winner-user [win]="win"></app-winner-user>
             </div>
         </div>
     </div>

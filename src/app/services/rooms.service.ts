@@ -30,7 +30,7 @@ export class RoomsService {
 
   // OPCIONES PARA IDENTIFICAR EL TIPO DE LOS DATOS QUE SERÁN TRAÍDOS
   httpOptions = {
-    headers: new HttpHeaders({ 
+    headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   }
@@ -66,12 +66,12 @@ export class RoomsService {
 
   get(id: string | null): Observable<any> {
     this.room = new RoomClass;
-    console.log("Service: "+id)
-    return this.http.get<RoomClass>(this.apiUrl+'/'+id)
+    console.log("Service: " + id)
+    return this.http.get<RoomClass>(this.apiUrl + '/' + id)
       .pipe(
         map((res: any) => {
           console.log(res);
-          if(res){
+          if (res) {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
@@ -85,7 +85,7 @@ export class RoomsService {
     return this.http.post<RoomClass>(this.apiUrl, room, this.httpOptions)
       .pipe(
         map((res: any) => {
-          if(res){
+          if (res) {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
@@ -98,10 +98,10 @@ export class RoomsService {
 
   updateRoom(room: RoomClass): Observable<RoomClass> {
     console.log("Servicio");
-    return this.http.put<RoomClass>(this.apiUrl+'/'+room.id, room, this.httpOptions)
+    return this.http.put<RoomClass>(this.apiUrl + '/' + room.id, room, this.httpOptions)
       .pipe(
         map((res: any) => {
-          if(res){
+          if (res) {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
@@ -112,7 +112,7 @@ export class RoomsService {
   }
 
   deleteRoom(room: RoomClass): Observable<RoomClass> {
-    return this.http.delete<RoomClass>(this.apiUrl+'/'+room.id)
+    return this.http.delete<RoomClass>(this.apiUrl + '/' + room.id)
       .pipe(
         map(() => {
           console.log("Eliminada")
@@ -123,4 +123,5 @@ export class RoomsService {
     // const url = `${this.apiUrl}/${room.id}`;
     // return this.http.delete<RoomClass>(url);
   }
+
 }

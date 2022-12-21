@@ -8,11 +8,17 @@ export class RoomClass {
     horas: number = 0;
     minutos: number = 0;
     segundos: number = 0;
-    participantes = []
+    participantes = [
+        {
+            id: 0,
+            numero: '',
+            cedula: '',
+        }
+    ]
 
-    constructor(){}
+    constructor() { }
 
-    setValues(item: any){
+    setValues(item: any) {
         this.id = item.id;
         this.numero = item.numero;
         this.capacidadTotal = item.capacidadTotal;

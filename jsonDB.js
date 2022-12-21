@@ -47,9 +47,15 @@ module.exports = function () {
                 "precio": 1500,
                 "ingresoTotal": 15000,
                 "horas": 0,
-                "minutos": 20,
+                "minutos": 50,
                 "segundos": 0,
-                participantes: []
+                participantes: [
+                    {
+                        "id": 1,
+                        "numero": 5,
+                        "cedula": "10001",
+                    }
+                ]
             },
             {
                 "id": 2,
