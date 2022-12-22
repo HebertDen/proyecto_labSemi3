@@ -21,10 +21,17 @@
                 </div>
             </div>
             <div class="col col-12 p-2 border-2 border-bottom border-dark">
-                <h2>Participantes</h2>
+                <div class="row justify-content-between">
+                    <div class="col col-auto">
+                        <h1>Participantes</h1>
+                    </div>
+                    <div class="d-flex col col-auto align-items-center">
+                        <a [routerLink]="['/user/create']" type="button" class="btn btn-success">Participar</a>
+                    </div>
+                </div>
             </div>
             <div *ngIf="room.participantes.length > 0" class="col col-12 p-5">
-                <div *ngFor="let itemParticipantes of room.participantes">
+                <div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -32,7 +39,7 @@
                                 <th>c&Eacute;DULA</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody *ngFor="let itemParticipantes of room.participantes">
                             <tr>
                                 <td>{{ itemParticipantes.numero }}</td>
                                 <td>{{ itemParticipantes.cedula }}</td>
@@ -44,7 +51,7 @@
             <div *ngIf="room.participantes.length === 0" class="col col-12 alert alert-danger" role="alert">
                 <strong>Sin participantes</strong>
             </div>
-            <div *ngIf="!win" class="col col-12 alert alert-success" role="alert">
+            <div *ngIf="win === ''" class="col col-12 alert alert-success" role="alert">
                 <app-winner-user [win]="win"></app-winner-user>
             </div>
         </div>

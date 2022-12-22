@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 // import { Room } from '../interfaces/room.interface'; //-> TODO:: ALTERNATIVA 1
 import { RoomClass } from '../classes/room.class'; //-> TODO:: ALTERNATIVA 2
+import { UserClass } from '../classes/user.class';
 
 // CRUD
 
@@ -20,13 +21,18 @@ export class RoomsService {
   // MÉTODO CON CLASS - transmitir
   public room$ = new Subject<RoomClass>();
   public rooms$ = new Subject<RoomClass[]>();
+  public tiempo$ = new Subject<RoomClass>();
 
   // recibir
   public room = new RoomClass();
   public rooms: RoomClass[] = [];
+  public tiempo = new RoomClass();
+  public win: any[] = [];
 
-  public fecha = new Date();
-  public tiempo: string = this.fecha.getHours() + ':' + this.fecha.getMinutes() + ':' + this.fecha.getSeconds();
+  public min: number = 1;
+  public max: number = 0;
+  public weigth: number = 0;
+  public value: number = 0;
 
   // OPCIONES PARA IDENTIFICAR EL TIPO DE LOS DATOS QUE SERÁN TRAÍDOS
   httpOptions = {
@@ -123,5 +129,32 @@ export class RoomsService {
     // const url = `${this.apiUrl}/${room.id}`;
     // return this.http.delete<RoomClass>(url);
   }
+
+  aleatorioWin(room: RoomClass): any { // Ganador
+    this.weigth = room.participantes.length; // Peso
+    console.log('El peso: ' + this.weigth);
+    // Valor random para la posición
+    this.min = Math.ceil(this.min);
+    this.max = Math.floor(this.weigth);
+    this.value = Math.floor(Math.random() * (this.min - this.max + 1) + this.min);
+    console.log('Mínimo: ' + this.min + 'Máximo: ' + this.max + 'Valor: ' + this.value);
+    // Búsqueda de la posción del valor
+    for (let index = 0; index < room.participantes.length; index++) {
+      if (index === this.value) {
+        this.win.push(room.participantes[index]);
+      }
+    }
+    console.log("Ganador: " + this.win);
+    return this.win; // Retorna el array del ganador
+  }
+
+  conteoRoom$(): Observable<RoomClass> {
+    return this.tiempo$.asObservable();
+  }
+
+  // conteoRoom(room: RoomClass): Observable<any> {
+    
+  //   return algo;
+  // }
 
 }

@@ -24,7 +24,9 @@ export class UsersService {
 
   // OPCIONES PARA IDENTIFICAR EL TIPO DE LOS DATOS QUE SERÁN TRAÍDOS
   httpOptions = {
-    header: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   }
 
   constructor(
@@ -39,8 +41,12 @@ export class UsersService {
     return this.http.get<UserClass>(this.apiUrl + '/' + this.id)
       .pipe(
         map((res: UserClass) => {
+          if(res){
+            this.user = new UserClass();
+            this.user.setValues(res);
+            this.user$.next(this.user);
+          }
           console.log(res);
-          res = this.user;
         }),
         catchError((err) => of(err))
       );
@@ -65,4 +71,20 @@ export class UsersService {
         catchError((err) => of(err))
       );
   }
+
+  createUser(user: UserClass): Observable<UserClass> {
+    return this.http.post<UserClass>(this.apiUrl, user, this.httpOptions)
+      .pipe(
+        map((res: any) => {
+          if (res) {
+            this.user = new UserClass();
+            this.user.setValues(res);
+            this.user$.next(this.user);
+          }
+          console.log("Creado");
+        }),
+        catchError((err) => of(err))
+      );
+  }
+
 }

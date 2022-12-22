@@ -12,22 +12,14 @@ module.exports = function () {
                 "nombre": "carlos",
                 "telefono": 12345,
                 "email": "carlos@gmail.com",
-                "cedula": 10001,
-                "sorteo": {
-                    "numero": 1,
-                    "numero_sala": 1
-                }
+                "cedula": 10001
             },
             {
                 "id": 2,
                 "nombre": "felipe",
                 "telefono": 3125,
                 "email": "felipe@outlook.com",
-                "cedula": 20002,
-                "sorteo": {
-                    "numero": 45,
-                    "numero_sala": 2
-                }
+                "cedula": 20002
             }
         ],
         winners: [
@@ -54,6 +46,11 @@ module.exports = function () {
                         "id": 1,
                         "numero": 5,
                         "cedula": "10001",
+                    },
+                    {
+                        "id": 2,
+                        "numero": 5,
+                        "cedula": "20001",
                     }
                 ]
             },

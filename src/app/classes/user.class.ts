@@ -4,10 +4,6 @@ export class UserClass {
     telefono: number = 0;
     email: string = "";
     cedula: number = 0;
-    sorteo!: {
-        numero: number,
-        numero_sala: number
-    };
 
     constructor(){}
 
@@ -17,6 +13,5 @@ export class UserClass {
         this.telefono = item.telefono;
         this.email = item.email;
         this.cedula = item.cedula;
-        this.sorteo = item.sorteo;
     }
 }

@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 
 // import { Room } from '../interfaces/room.interface'; //-> TODO:: ALTERNATIVA 1
 import { WinnerClass } from '../classes/winner.class'; //-> TODO:: ALTERNATIVA 2
+import { UserClass } from '../classes/user.class';
 
 // CRUD
 
@@ -23,6 +24,12 @@ export class WinnersService {
   // recibir
   public winner = new WinnerClass();
   public winners: WinnerClass[] = [];
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
   constructor(
     private http: HttpClient
@@ -63,6 +70,24 @@ export class WinnersService {
             this.winner.setValues(res)
             this.winner$.next(this.winner)
           };
+        }),
+        catchError((err) => of(err))
+      );
+  }
+
+  createWinner(user: UserClass): Observable<WinnerClass> {
+    this.winner.nombre = user.nombre;
+    this.winner.email = user.email;
+    this.winner.cedula = user.cedula;
+    return this.http.post<WinnerClass>(this.apiUrl, this.winner, this.httpOptions)
+      .pipe(
+        map((res: any) => {
+          if (res) {
+            this.winner = new WinnerClass();
+            this.winner.setValues(res);
+            this.winner$.next(this.winner);
+          }
+          console.log("Creada");
         }),
         catchError((err) => of(err))
       );

@@ -10,6 +10,8 @@ import { HomeUserComponent } from './home-user/home-user.component';
 import { RoomUserComponent } from './room-user/room-user.component';
 import { WinnerUserComponent } from './winner-user/winner-user.component';
 import { NavigateUserComponent } from './navigate-user/navigate-user.component';
+import { FormsModule } from '@angular/forms';
+import { CreateCompetitorComponent } from './create-competitor/create-competitor.component';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { NavigateUserComponent } from './navigate-user/navigate-user.component';
     HomeUserComponent,
     RoomUserComponent,
     WinnerUserComponent,
-    NavigateUserComponent
+    NavigateUserComponent,
+    CreateCompetitorComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ]
 })
 export class UserModule { }

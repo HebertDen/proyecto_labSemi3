@@ -19,6 +19,17 @@
                     <div class="mb-3">
                         <input type="number" min="0" [(ngModel)]="room.precio" name="precio" class="form-control" placeholder="Precio">
                     </div>
+                    <div class="d-flex col col-12 mb-3 justify-content-between">
+                        <div class="col col-3">
+                            <input type="number" min="0" [(ngModel)]="room.horas" class="form-control" placeholder="Horas">
+                        </div>
+                        <div class="col col-3">
+                            <input type="number" min="0" [(ngModel)]="room.minutos" class="form-control" placeholder="Minutos">
+                        </div>
+                        <div class="col col-3">
+                            <input type="number" min="0" [(ngModel)]="room.segundos" class="form-control" placeholder="Segundos">
+                        </div>
+                    </div>
                     <div><button class="btn btn-success" (click)="onCreate(room)">Crear</button>
                     <a [routerLink]="['/admin/']" type="button" class="btn btn-secondary">Cancelar</a></div>
                 </div>
