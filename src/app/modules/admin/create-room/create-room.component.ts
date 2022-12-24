@@ -20,6 +20,7 @@ export class CreateRoomComponent implements OnInit {
   }
 
   onCreate(room: RoomClass): void {
+    room.participantes = [];
     this.room = room;
     this.roomsService.createRoom(this.room).subscribe();
     this.route.navigate(['/admin/']);

@@ -26,11 +26,13 @@ export class RoomUserComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.router.snapshot.paramMap.get('id') || '';
     this.roomSubscription = this.roomsService.get$().subscribe((itemRoom: RoomClass) => {
-      this.cambio(itemRoom);
+      this.room = itemRoom;
     });
     this.roomsService
       .get(this.id)
       .subscribe();
+    console.log('hoal')
+    this.cambio(this.room);
   }
 
   cambio(sala: RoomClass): void {
@@ -39,6 +41,7 @@ export class RoomUserComponent implements OnInit {
       weigth = sala.participantes[item].cedula.length;
       medi = weigth - 4;
       for (let index = 0; index < medi; index++) {
+        console.log(sala.participantes[item]);
         sala.participantes[item].cedula = sala.participantes[item].cedula.replace(sala.participantes[item].cedula[index], 'X');
       }
     }

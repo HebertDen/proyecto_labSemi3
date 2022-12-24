@@ -89,6 +89,7 @@ export class RoomsService {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
+            this.rooms$.next(this.rooms);
           }
         }),
         catchError((err) => of(err))
