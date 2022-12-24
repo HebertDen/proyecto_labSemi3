@@ -61,7 +61,7 @@ export class WinnersService {
   }
 
   get(id: string | null): Observable<any> {
-    return this.http.get<WinnerClass>(this.apiUrl)
+    return this.http.get<WinnerClass>(this.apiUrl + '/' + id)
       .pipe(
         map((res: any) => {
           console.log(res);

@@ -26,6 +26,7 @@ export class RoomUserComponent implements OnInit {
 
   roomSubscription: Subscription = new Subscription;
   public room = new RoomClass();
+  public roomForTime = new RoomClass();
 
   userSubscription: Subscription = new Subscription;
   public user = new UserClass();
@@ -46,9 +47,10 @@ export class RoomUserComponent implements OnInit {
     this.roomsService
       .get(this.id)
       .subscribe();
-    this.reset();
-    this.asign();
-    this.start();
+    this.roomSubscription = this.roomsService.conteoRoom$().subscribe();
+    this.roomsService
+      .conteoRoom(this.room)
+      .subscribe();
   }
 
   asign(): void {

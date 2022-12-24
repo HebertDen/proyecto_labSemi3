@@ -2,7 +2,7 @@ export class WinnerClass {
     id: number = 0;
     nombre: string = '';
     email: string = '';
-    cedula: number = 0;
+    cedula: string = '';
 
     constructor(){ }
 

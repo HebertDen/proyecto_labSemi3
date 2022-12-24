@@ -3,7 +3,7 @@ export class UserClass {
     nombre: string = "";
     telefono: number = 0;
     email: string = "";
-    cedula: number = 0;
+    cedula: string = '';
 
     constructor(){}
 

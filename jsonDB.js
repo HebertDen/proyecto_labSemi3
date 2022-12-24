@@ -41,18 +41,7 @@ module.exports = function () {
                 "horas": 0,
                 "minutos": 50,
                 "segundos": 0,
-                participantes: [
-                    {
-                        "id": 1,
-                        "numero": 5,
-                        "cedula": "10001",
-                    },
-                    {
-                        "id": 2,
-                        "numero": 5,
-                        "cedula": "20001",
-                    }
-                ]
+                participantes: []
             },
             {
                 "id": 2,

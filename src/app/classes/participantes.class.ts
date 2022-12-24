@@ -1,12 +1,10 @@
 export class ParticipantesClass {
-    id: number = 0;
-    numero: string = '';
+    numero: number = 0;
     cedula: string = '';
 
     constructor(){}
 
-    setValues(id: number, numero: string, cedula: string){
-        this.id = id;
+    setValues(numero: number, cedula: string){
         this.numero = numero;
         this.cedula = cedula;
     }
