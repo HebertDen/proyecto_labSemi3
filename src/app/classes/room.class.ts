@@ -5,11 +5,10 @@ export class RoomClass {
     capacidadActual: number = 0;
     precio: number = 0;
     ingresoTotal: number = 0;
-    horas: number = 0;
-    minutos: number = 0;
-    segundos: number = 0;
+    tiempo: string = '';
     participantes = [
         {
+            id: 0,
             numero: 0,
             cedula: ''
         }
@@ -24,9 +23,7 @@ export class RoomClass {
         this.capacidadActual = item.capacidadActual;
         this.precio = item.precio;
         this.ingresoTotal = item.ingresoTotal;
-        this.horas = item.horas;
-        this.minutos = item.minutos;
-        this.segundos = item.segundos;
+        this.tiempo = item.tiempo;
         this.participantes = item.participantes;
     }
 }

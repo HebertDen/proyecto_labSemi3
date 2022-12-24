@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionhomeComponent } from './sectionhome.component';
+import { CountdownTimerComponent } from './countdown-timer.component';
 
-describe('SectionhomeComponent', () => {
-  let component: SectionhomeComponent;
-  let fixture: ComponentFixture<SectionhomeComponent>;
+describe('CountdownTimerComponent', () => {
+  let component: CountdownTimerComponent;
+  let fixture: ComponentFixture<CountdownTimerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SectionhomeComponent ]
+      declarations: [ CountdownTimerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SectionhomeComponent);
+    fixture = TestBed.createComponent(CountdownTimerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

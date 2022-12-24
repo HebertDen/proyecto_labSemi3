@@ -37,8 +37,8 @@ export class UsersService {
     return this.user$.asObservable();
   }
 
-  get(): Observable<any> {
-    return this.http.get<UserClass>(this.apiUrl + '/' + this.id)
+  get(id: string | null): Observable<any> {
+    return this.http.get<UserClass>(this.apiUrl + '/' + id)
       .pipe(
         map((res: UserClass) => {
           if(res){

@@ -86,6 +86,7 @@ export class WinnersService {
             this.winner = new WinnerClass();
             this.winner.setValues(res);
             this.winner$.next(this.winner);
+            this.winners$.next(this.winners);
           }
           console.log("Creada");
         }),

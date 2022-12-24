@@ -42,20 +42,27 @@ export class CreateCompetitorComponent implements OnInit {
   }
 
   onCreate(user: UserClass): void {
-    this.user = user;
-    this.onEnroll();
-    this.usersService.createUser(this.user).subscribe();
-    console.log(this.room);
-    this.roomsService.updateRoom(this.room).subscribe();
-    this.route.navigate(['/user/room/'+this.id]);
+    if(this.room.capacidadActual === this.room.capacidadTotal){
+      console.log('No es posible ingresar más participantes');
+    } else if(this.room.capacidadActual < this.room.capacidadTotal){
+      this.user = user;
+      this.onEnroll();
+      this.usersService.createUser(this.user).subscribe();
+      console.log(this.room);
+      this.roomsService.updateRoom(this.room).subscribe();
+      this.route.navigate(['/room/'+this.id]);
+    }
   }
 
   onEnroll(): void {
     this.numero = Math.floor(Math.random() * 31) + 1;
     this.cedula = this.user.cedula;
+    this.participante.id = this.user.id;
     this.participante.numero = this.numero;
     this.participante.cedula = this.cedula;
     this.room.participantes.push(this.participante);
+    this.room.capacidadActual += 1;
+    this.room.ingresoTotal = this.room.precio * this.room.participantes.length;
     console.log(this.participante);
   }
 

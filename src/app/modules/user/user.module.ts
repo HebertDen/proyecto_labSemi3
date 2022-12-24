@@ -11,6 +11,7 @@ import { RoomUserComponent } from './room-user/room-user.component';
 import { WinnerUserComponent } from './winner-user/winner-user.component';
 import { FormsModule } from '@angular/forms';
 import { CreateCompetitorComponent } from './create-competitor/create-competitor.component';
+import { CountdownTimerModule } from 'projects/countdown-timer/src/public-api';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CreateCompetitorComponent } from './create-competitor/create-competitor
   imports: [
     CommonModule,
     UserRoutingModule,
-    FormsModule
+    FormsModule,
+    CountdownTimerModule
   ]
 })
 export class UserModule { }

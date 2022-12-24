@@ -7,6 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 // import { Room } from '../interfaces/room.interface'; //-> TODO:: ALTERNATIVA 1
 import { RoomClass } from '../classes/room.class'; //-> TODO:: ALTERNATIVA 2
 import { UserClass } from '../classes/user.class';
+import { Time } from '../classes/time';
 
 // CRUD
 
@@ -21,18 +22,28 @@ export class RoomsService {
   // MÉTODO CON CLASS - transmitir
   public room$ = new Subject<RoomClass>();
   public rooms$ = new Subject<RoomClass[]>();
-  public tiempo$ = new Subject<RoomClass>();
+  public tiempo$ = new Subject<Time>();
 
   // recibir
   public room = new RoomClass();
+  public room1 = new RoomClass();
   public rooms: RoomClass[] = [];
-  public tiempo = new RoomClass();
-  public win: any[] = [];
+  public tiempo = new Time();
+  public win: any;
 
   public min: number = 1;
   public max: number = 0;
   public weigth: number = 0;
   public value: number = 0;
+
+  public dato: string = '';
+
+  public hours: number = 0;
+  public minutes: number = 0;
+  public seconds: number = 0;
+  public timer: any;
+  public date = new Date();
+  public time: number = 0;
 
   // OPCIONES PARA IDENTIFICAR EL TIPO DE LOS DATOS QUE SERÁN TRAÍDOS
   httpOptions = {
@@ -54,7 +65,6 @@ export class RoomsService {
     return this.http.get<RoomClass[]>(this.apiUrl)
       .pipe(
         map((res: any) => {
-          console.log(res);
           res.forEach((item: any) => {
             this.room = new RoomClass()
             this.room.setValues(item)
@@ -72,11 +82,9 @@ export class RoomsService {
 
   get(id: string | null): Observable<any> {
     this.room = new RoomClass;
-    console.log("Service: " + id)
     return this.http.get<RoomClass>(this.apiUrl + '/' + id)
       .pipe(
         map((res: any) => {
-          console.log(res);
           if (res) {
             this.room = new RoomClass();
             this.room.setValues(res);
@@ -95,6 +103,7 @@ export class RoomsService {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
+            this.rooms$.next(this.rooms);
           }
           console.log("Creada");
         }),
@@ -111,6 +120,7 @@ export class RoomsService {
             this.room = new RoomClass();
             this.room.setValues(res);
             this.room$.next(this.room);
+            this.rooms$.next(this.rooms);
           }
         }),
         catchError((err) => of(err))
@@ -148,13 +158,10 @@ export class RoomsService {
     return this.win; // Retorna el array del ganador
   }
 
-  conteoRoom$(): Observable<RoomClass> {
-    return this.tiempo$.asObservable();
-  }
-
-  // conteoRoom(room: RoomClass): Observable<any> {
-    
-  //   return algo;
+  // getInfoRoom(id: string): RoomClass {
+  //   console.log("Service2: " + id);
+  //   this.room1 = this.http.get<RoomClass>(this.apiUrl + '/' + id);
+  //   return this.room1;
   // }
 
 }
