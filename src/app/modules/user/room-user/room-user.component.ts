@@ -60,7 +60,7 @@ export class RoomUserComponent implements OnInit {
     let min = 0, max = 0, value = 0;
     // Búsqueda de la posición del valor
     if (this.room.participantes.length === 1) {
-      this.win = this.room.participantes.find;
+      this.win = this.room.participantes;
     } else {
       // Valor random para la posición
       max = this.room.participantes.length;
