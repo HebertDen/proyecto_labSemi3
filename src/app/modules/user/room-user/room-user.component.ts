@@ -16,16 +16,12 @@ export class RoomUserComponent implements OnInit {
   public id: string = '';
 
   public win: any;
-  public win2: any;
 
   roomSubscription: Subscription = new Subscription;
   public room = new RoomClass();
 
   userSubscription: Subscription = new Subscription;
   public users: UserClass[] = [];
-
-  public dato: any;
-  public datosParticipantes: any;
 
   constructor(
     public roomsService: RoomsService,
@@ -60,8 +56,8 @@ export class RoomUserComponent implements OnInit {
     let min = 0, max = 0, value = 0;
     // Búsqueda de la posición del valor
     if (this.room.participantes.length === 1) {
-      this.win = this.room.participantes;
-    } else {
+      this.win = this.room.participantes[0];
+    } else if(this.room.participantes.length > 1) {
       // Valor random para la posición
       max = this.room.participantes.length;
       // console.log('El peso: ' + max); // Peso

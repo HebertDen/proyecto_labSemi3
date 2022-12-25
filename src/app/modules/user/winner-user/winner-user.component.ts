@@ -24,7 +24,7 @@ export class WinnerUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.search(this.winValues.cedula);
+    this.search(this.winValues['cedula']);
     this.winnersService.createWinner(this.user).subscribe();
     this.reemplazar();
   }
