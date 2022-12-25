@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserClass } from 'src/app/classes/user.class';
-import { UsersService } from 'src/app/services/users.service';
 import { WinnerClass } from 'src/app/classes/winner.class';
 import { WinnersService } from 'src/app/services/winners.service';
 import { Subscription } from 'rxjs';
@@ -12,35 +11,26 @@ import { Subscription } from 'rxjs';
 })
 export class WinnerUserComponent implements OnInit {
 
-  userSubscription: Subscription = new Subscription;
-  winnerSubscription: Subscription = new Subscription;
-
   @Input() winValues: any;
+  @Input() usersValues: UserClass[] = [];
 
-  public user = new UserClass();
-  public users: UserClass[] = [];
+  winnerSubscription: Subscription = new Subscription;
   public winner = new WinnerClass();
+  
+  public user = new UserClass();
 
   constructor(
-    private usersService: UsersService,
     private winnersService: WinnersService
   ) { }
 
   ngOnInit(): void {
-    this.userSubscription = this.usersService.getAll$().subscribe((items: UserClass[]) => {
-      this.users = items;
-    });
-    this.usersService
-      .getAll()
-      .subscribe();
-    this.users;
     this.search(this.winValues.cedula);
-    // this.winnersService.createWinner(this.user).subscribe();
+    this.winnersService.createWinner(this.user).subscribe();
     this.reemplazar();
   }
 
   search(cedula: string): void {
-    this.users.forEach(user => {
+    this.usersValues.forEach(user => {
       if (user.cedula == cedula) {
         this.user = user;
       }

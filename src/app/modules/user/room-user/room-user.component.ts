@@ -3,6 +3,8 @@ import { RoomsService } from 'src/app/services/rooms.service';
 import { Subscription } from 'rxjs';
 import { RoomClass } from 'src/app/classes/room.class';
 import { ActivatedRoute } from '@angular/router';
+import { UserClass } from 'src/app/classes/user.class';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-room-user',
@@ -19,11 +21,15 @@ export class RoomUserComponent implements OnInit {
   roomSubscription: Subscription = new Subscription;
   public room = new RoomClass();
 
+  userSubscription: Subscription = new Subscription;
+  public users: UserClass[] = [];
+
   public dato: any;
   public datosParticipantes: any;
 
   constructor(
     public roomsService: RoomsService,
+    public usersService: UsersService,
     private router: ActivatedRoute
   ) { }
 
@@ -34,6 +40,12 @@ export class RoomUserComponent implements OnInit {
     });
     this.roomsService
       .get(this.id)
+      .subscribe();
+    this.userSubscription = this.usersService.getAll$().subscribe((itemUsers: UserClass[]) => {
+      this.users = itemUsers;
+    });
+    this.usersService
+      .getAll()
       .subscribe();
   }
 

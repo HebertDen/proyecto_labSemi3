@@ -56,7 +56,7 @@ export class CreateCompetitorComponent implements OnInit {
     this.participante.numero = this.numero;
     this.participante.cedula = this.cedula;
     this.room.capacidadActual += 1;
-    this.room.ingresoTotal = this.room.precio * this.room.participantes.length + 1;
+    this.room.ingresoTotal = this.room.precio * (this.room.participantes.length + 1);
     this.room.participantes.push(this.participante);
     console.log(this.participante);
   }

@@ -34,7 +34,4 @@ export class HomeUserComponent implements OnInit {
       .subscribe();
   }
 
-  entrarSala(): void { // Comprar para jugar en el sorteo
-
-  }
 }

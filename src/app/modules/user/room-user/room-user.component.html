@@ -21,7 +21,7 @@
                     <proyecto-countdown-timer [data]="room" (emitir)="recibir($event)"></proyecto-countdown-timer>
                 </div>
                 <div *ngIf="win" class="col col-12 alert alert-success" role="alert">
-                    <app-winner-user [winValues]="win"></app-winner-user>
+                    <app-winner-user [winValues]="win" [usersValues]="users"></app-winner-user>
                 </div>
             </div>
             <div class="col col-12 p-2 border-2 border-bottom border-dark">

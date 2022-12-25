@@ -57,7 +57,7 @@ export class UsersService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get<UserClass[]>(this.apiUrl + this.id)
+    return this.http.get<UserClass[]>(this.apiUrl)
       .pipe(
         map((res: any) => {
           console.log(res);
