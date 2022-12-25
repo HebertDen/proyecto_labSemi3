@@ -1,14 +1,18 @@
-import { ParticipantesClass } from "./participantes.class";
-
 export class RoomClass {
-    id: string = '';
+    [x: string]: any;
+    id: string = "";
     numero: number = 0;
     capacidadTotal: number = 0;
     capacidadActual: number = 0;
     precio: number = 0;
     ingresoTotal: number = 0;
-    tiempo: string = '';
-    participantes: ParticipantesClass[] = [];
+    tiempo: string = "";
+    participantes = [
+        {
+            numero: 0,
+            cedula: ""
+        }
+    ];
 
     constructor() { }
 

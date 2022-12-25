@@ -141,28 +141,4 @@ export class RoomsService {
     // return this.http.delete<RoomClass>(url);
   }
 
-  aleatorioWin(room: RoomClass): any { // Ganador
-    this.weigth = room.participantes.length; // Peso
-    console.log('El peso: ' + this.weigth);
-    // Valor random para la posición
-    this.min = Math.ceil(this.min);
-    this.max = Math.floor(this.weigth);
-    this.value = Math.floor(Math.random() * (this.min - this.max + 1) + this.min);
-    console.log('Mínimo: ' + this.min + 'Máximo: ' + this.max + 'Valor: ' + this.value);
-    // Búsqueda de la posción del valor
-    for (let index = 0; index < room.participantes.length; index++) {
-      if (index === this.value) {
-        this.win.push(room.participantes[index]);
-      }
-    }
-    console.log("Ganador: " + this.win);
-    return this.win; // Retorna el array del ganador
-  }
-
-  // getInfoRoom(id: string): RoomClass {
-  //   console.log("Service2: " + id);
-  //   this.room1 = this.http.get<RoomClass>(this.apiUrl + '/' + id);
-  //   return this.room1;
-  // }
-
 }

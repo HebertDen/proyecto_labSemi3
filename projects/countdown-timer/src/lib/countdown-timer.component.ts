@@ -57,7 +57,7 @@ export class CountdownTimerComponent implements OnInit {
       };
       this.finishDate = new Date(this.finishDateString);
       console.log(this.finishDate);
-      console.clear();
+      // console.clear();
       let counterTimer$ = this.start().subscribe(() => {
         if (this.time.days === 0 && this.time.hours === 0 && this.time.minutes === 0 && this.time.seconds === 0) {
           this.time = {

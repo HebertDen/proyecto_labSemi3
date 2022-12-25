@@ -20,7 +20,7 @@
                         <input type="email" [(ngModel)]="user.email" name="precio" class="form-control" placeholder="Correo electr&oacute;nico">
                     </div>
                     <div class="mb-3">
-                        <input type="number" min="0" [(ngModel)]="user.cedula" name="precio" class="form-control" placeholder="C&eacute;dula">
+                        <input type="text" [(ngModel)]="user.cedula" name="cedula" class="form-control" placeholder="C&eacute;dula">
                     </div>
                     <div><button class="btn btn-success" (click)="onCreate(user)">Participar</button>
                     <a [routerLink]="['/room', room.id]" type="button" class="btn btn-secondary">Cancelar</a></div>

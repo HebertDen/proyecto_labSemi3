@@ -15,28 +15,47 @@ export class WinnerUserComponent implements OnInit {
   userSubscription: Subscription = new Subscription;
   winnerSubscription: Subscription = new Subscription;
 
-  @Input() win: any;
+  @Input() winValues: any;
 
   public user = new UserClass();
+  public users: UserClass[] = [];
   public winner = new WinnerClass();
 
   constructor(
-    private usersServices: UsersService,
+    private usersService: UsersService,
     private winnersService: WinnersService
   ) { }
 
   ngOnInit(): void {
-    console.log('ahora');
-    console.log(this.win);
-
-    this.userSubscription = this.usersServices.get$().subscribe((itemUser: UserClass) => {
-      this.user = itemUser;
+    this.userSubscription = this.usersService.getAll$().subscribe((items: UserClass[]) => {
+      this.users = items;
     });
-    this.usersServices
-      .get(this.win.id)
+    this.usersService
+      .getAll()
       .subscribe();
-    
-    this.winnersService.createWinner(this.user).subscribe();
+    this.users;
+    this.search(this.winValues.cedula);
+    // this.winnersService.createWinner(this.user).subscribe();
+    this.reemplazar();
+  }
+
+  search(cedula: string): void {
+    this.users.forEach(user => {
+      if (user.cedula == cedula) {
+        this.user = user;
+      }
+    });
+  }
+
+  reemplazar(): void {
+    var dato, weigth, posS;
+    dato = this.winValues;
+    weigth = dato.cedula.length;
+    posS = weigth - 4;
+    for (let index = 0; index < posS; index++) {
+      dato.cedula = dato.cedula.replace(dato.cedula[index], 'X');
+    }
+    this.winValues = dato;
   }
 
 }

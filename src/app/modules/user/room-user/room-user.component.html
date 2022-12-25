@@ -1,12 +1,27 @@
 <section>
     <div class="row mt-5 px-5 container-fluid">
         <div class="col col-12">
-            <div class="col col-12 p-2 border-2 border-bottom border-dark">
-                <h1>Sala &#35;{{ room.numero }}</h1>
+            <div class="d-flex col col-12 justify-content-between p-2 border-2 border-bottom border-dark">
+                <div class="col col-8">
+                    <h1>Sala &#35;{{ room.numero }}</h1>
+                </div>
+                <div class="col col-4">
+                    <div class="row text-end">
+                        <div class="col col-12">
+                            <span>{{ room.capacidadActual }}&#47;{{ room.capacidadTotal }}</span>
+                        </div>
+                        <div class="col col-12">
+                            <span>Precio: &#36;{{ room.precio }}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col col-12 p-5 ">
                 <div>
                     <proyecto-countdown-timer [data]="room" (emitir)="recibir($event)"></proyecto-countdown-timer>
+                </div>
+                <div *ngIf="win" class="col col-12 alert alert-success" role="alert">
+                    <app-winner-user [winValues]="win"></app-winner-user>
                 </div>
             </div>
             <div class="col col-12 p-2 border-2 border-bottom border-dark">
@@ -15,7 +30,8 @@
                         <h1>Participantes</h1>
                     </div>
                     <div class="d-flex col col-auto align-items-center">
-                        <a [routerLink]="['/create', room.id]" type="button" id="btnEnroll" class="btn btn-success">Participar</a>
+                        <a [routerLink]="['/create', room.id]" type="button" id="btnEnroll"
+                            class="btn btn-success">Participar</a>
                     </div>
                 </div>
             </div>
@@ -25,13 +41,11 @@
                         <thead>
                             <tr>
                                 <th>N&Uacute;MERO</th>
-                                <th>C&Eacute;DULA</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let itemParticipantes of room.participantes">
                             <tr>
                                 <td>{{ itemParticipantes.numero }}</td>
-                                <td>{{ itemParticipantes.cedula }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -39,9 +53,6 @@
             </div>
             <div *ngIf="room.participantes.length === 0" class="col col-12 alert alert-danger" role="alert">
                 <strong>Sin participantes</strong>
-            </div>
-            <div *ngIf="win" class="col col-12 alert alert-success" role="alert">
-                <app-winner-user [win]="win"></app-winner-user>
             </div>
         </div>
     </div>
